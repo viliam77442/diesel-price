@@ -1,0 +1,14 @@
+function trackDieselPrice() {
+    // Use an API to fetch the current diesel price
+    fetch('https://api.eia.gov/series/?api_key=YOUR_API_KEY&series_id=PET.EMD_EPD2D_PTE_NUS_DPG.W')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the current diesel price from the API response
+            const price = data.series[0].data[0][1];
+            console.log(`Current diesel price in the USA: ${price}`);
+        })
+        .catch(error => console.error(error));
+}
+
+// Call the function to track the diesel price
+trackDieselPrice();
